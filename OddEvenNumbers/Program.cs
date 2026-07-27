@@ -27,7 +27,6 @@ namespace OddEvenNumbers
             }
             Console.WriteLine("]");
         }
-
         static bool IsEven(int number) => number % 2 == 0;
 
         static bool IsOdd(int number) => !IsEven(number);
