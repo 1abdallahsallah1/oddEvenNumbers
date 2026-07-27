@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic; // لتعريف IEnumerable
+using System.Linq;                // لاستخدام ميثود Where
 
 namespace OddEvenNumbers
 {
@@ -11,31 +13,23 @@ namespace OddEvenNumbers
             printNumbers("numbers", numbers);
             printNumbers("even numbers", numbers.Where(IsEven));
             printNumbers("odd numbers", numbers.Where(IsOdd));
-            console.readkey();
+
+            Console.ReadKey();
         }
 
-
-
-        static void printNumbers (string title , IEnumerable<int> numbers)
-        { console.WriteLine();
-            console.WriteLine($"{title}: [");
-        foreach (var number in numbers)
+        static void printNumbers(string title, IEnumerable<int> numbers)
+        {
+            Console.WriteLine();
+            Console.Write($"{title}: [");
+            foreach (var number in numbers)
             {
-                Console.WriteLine($"{number},");
+                Console.Write($"{number},");
             }
             Console.WriteLine("]");
-            console.WriteLine();
         }
-        static bool IsEven(int number)
-        { if (number % 2 == 0)
-            {return true }
-        else { return false; }
-        }
-        static bool IsOdd(int number)
-        {
-            if (number % 2 != 0)
-            { return true }
-            else { return false; }
-        }
+
+        static bool IsEven(int number) => number % 2 == 0;
+
+        static bool IsOdd(int number) => !IsEven(number);
     }
 }
